@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>23BCE1022</title>
+        
+    </head>
+    <body>
+        <table border id="table">
+            <tr>
+                <th>Heading1
+                </th>
+                <th>Heading2</th>
+                <th>Heading3</th>
+            </tr>
+
+        </table>
+        <br>
+        <form>
+            <input type="button" id="but" value="Create Dynamic Table" onclick="create()"><br><br>
+            <input type="button" id="button1" style="background-color:red" value="click me for color change" onclick="color()">
+            <input type="text" id="text1" style="background-color:green" >
+            <p id="greeting"></p><br>
+            
+            <ul id="myList">
+                <li>Apple</li>
+                <li>Banana</li>
+                <li>Orange</li>
+            </ul>
+            <input type="button" id="list1" onclick="list()" value="list1">
+            <div id="container"></div>
+            <br>
+            <input type="text" id="inputfield" placeholder="Type smth here..."><br><br>
+            <input type="text" id="countfield" placeholder>
+            
+        </form>
+        <script>
+            function create()
+            {
+                let table=document.getElementById("table");
+                let row=table.insertRow();
+                let cell1=row.insertCell(0);
+                let cell2=row.insertCell(1);
+                let cell3=row.insertCell(2);
+
+                let a=prompt("Enter The column value 1 for row 1:");
+                let b=prompt("Enter the column value 2 for row 1");
+                let c=prompt("Enter the column value 3 for row 1:");
+
+                cell1.innerHTML=a;
+                cell2.innerHTML=b;
+                cell3.innerHTML=c;
+
+                 row=table.insertRow();
+                 cell1=row.insertCell(0);
+                 cell2=row.insertCell(1);
+                 cell3=row.insertCell(2);
+
+                a=prompt("Enter The column value 1 for row 2:");
+                b=prompt("Enter the column value 2 for row 2");
+                c=prompt("Enter the column value 3 for row 2:");
+
+                cell1.innerHTML=a;
+                cell2.innerHTML=b;
+                cell3.innerHTML=c;
+
+                row=table.insertRow();
+                cell1=row.insertCell(0);
+                cell2=row.insertCell(1);
+                cell3=row.insertCell(2);
+
+                a=prompt("Enter The column value 1 for row 3:");
+                b=prompt("Enter the column value 2 for row 3:");
+                c=prompt("Enter the column value 3 for row 3:");
+
+                cell1.innerHTML=a;
+                cell2.innerHTML=b;
+                cell3.innerHTML=c;
+
+                document.getElementById("but").disabled = true;
+            }
+
+            document.getElementById("button1").addEventListener("mouseover",function()
+        {
+            this.style.backgroundColor="green";
+        })
+            
+            document.getElementById("text1").addEventListener("focus",function(){this.style.backgroundColor="yellow";greeting.textContent='hello,witnessing the color change'})
+            document.getElementById("list1").addEventListener("click", list);
+            function list() {
+                var input = document.createElement('input');
+                var button = document.createElement('button');
+                const list = document.getElementById('myList');
+                var container = document.getElementById('container');
+                
+                input.type = 'text';
+                button.textContent = 'Add to List';
+            
+                container.appendChild(input);
+                container.appendChild(button);
+            
+                button.addEventListener('click', function() {
+                    const textval = input.value.trim();
+                    if (textval) { 
+                        const listitem = document.createElement('li');
+                        listitem.textContent = textval;
+                        list.appendChild(listitem);
+                        input.value = '';
+                    } else {
+                        alert('Please enter a value to add to the list.');
+                    }
+                });
+            }
+            
+
+        const inputfield = document.getElementById('inputfield');
+        const countfield = document.getElementById('countfield');
+        let count=0;
+
+        inputfield.addEventListener('keypress', function() {
+            count++;
+            countfield.value = count; 
+        });
+            
+        </script>
+    </body>
+</html>

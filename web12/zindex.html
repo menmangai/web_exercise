@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>23BCE1022title>
+    <style>
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+        }
+
+        .box {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.8;
+        }
+
+        .red {
+            background-color: red;
+            z-index: 1;
+            top: 20px;
+            left: 20px;
+        }
+
+        .blue {
+            background-color: blue;
+            z-index: 2;
+            top: 40px;
+            left: 40px;
+        }
+
+        .green {
+            background-color: green;
+            z-index: 3;
+            top: 60px;
+            left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="red" class="box red"></div>
+        <div id="blue" class="box blue"></div>
+        <div id="green" class="box green"></div>
+    </div>
+    <div class="controls">
+        <button onclick="change('red',1);">Change z index of red box by +1</button>
+        <button onclick="change('blue',1);">Change z index of blue box by +1</button>
+        <button onclick="change('green',1);">Change z index of green box by +1</button>
+        <button onclick="change('red',-1);">Change z index of red box by -1</button>
+        <button onclick="change('blue',-1);">Change z index of blue box by -1</button>
+        <button onclick="change('green',-1);">Change z index of green box by -1</button>
+    </div>
+    <div class="display">
+        <p>current Z index of red: <span id="red-z">1</span></p>
+        <p>current Z index of blue: <span id="blue-z">2</span></p>
+        <p>current Z index of green: <span id="green-z">3</span></p>
+    </div>
+    <script>
+        function change(val, ind) {
+            var ele = document.getElementById(val);
+            let curr = parseInt(window.getComputedStyle(ele).zIndex);
+            let newZIndex = curr + ind;
+            ele.style.zIndex = newZIndex;
+            document.getElementById(val + '-z').textContent = newZIndex;
+        }
+    </script>
+</body>
+</html>

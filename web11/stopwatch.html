@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>23BCE1022</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .container {
+        margin-bottom: 20px;
+      }
+
+      #stopwatch {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .button-group button {
+        margin-right: 10px;
+      }
+
+      #dob-section {
+        margin-top: 20px;
+      }
+
+      #age {
+        font-weight: bold;
+        color: green;
+      }
+
+      #textarea-section {
+        margin-top: 20px;
+      }
+
+      #charCounter {
+        font-size: 0.9em;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="stopwatch-section">
+      <h2>Stopwatch</h2>
+      <div id="stopwatch">00:00:00</div>
+      <div class="button-group">
+        <button id="startButton">Start</button>
+        <button id="stopButton">Stop</button>
+        <button id="resetButton">Reset</button>
+      </div>
+    </div>
+    <div class="container" id="dob-section">
+      <h2>Calculate Age</h2>
+      <label for="dob">Enter Date of Birth:</label>
+      <input type="date" id="dob" />
+      <div id="age"></div>
+    </div>
+    <div class="container" id="textarea-section">
+      <h2>Character Counter</h2>
+      <textarea
+        id="textArea"
+        rows="5"
+        cols="30"
+        placeholder="Type here..."
+      ></textarea>
+      <div id="charCounter">Characters: 0</div>
+    </div>
+    <script>
+      let timer;
+      let elapsedTime = 0;
+
+      function formatTime(ms) {
+        const seconds = Math.floor(ms / 1000) % 60;
+        const minutes = Math.floor(ms / 60000) % 60;
+        const hours = Math.floor(ms / 3600000);
+        return (
+          String(hours).padStart(2, "0") +
+          ":" +
+          String(minutes).padStart(2, "0") +
+          ":" +
+          String(seconds).padStart(2, "0")
+        );
+      }
+      function updateStopwatch() {
+        elapsedTime += 1000;
+        document.getElementById("stopwatch").textContent =
+          formatTime(elapsedTime);
+      }
+      document.getElementById("startButton").addEventListener("click", () => {
+        if (!timer) {
+          timer = setInterval(updateStopwatch, 1000);
+        }
+      });
+      document.getElementById("stopButton").addEventListener("click", () => {
+        clearInterval(timer);
+        timer = null;
+      });
+      document.getElementById("resetButton").addEventListener("click", () => {
+        clearInterval(timer);
+        timer = null;
+        elapsedTime = 0;
+        document.getElementById("stopwatch").textContent = "00:00:00";
+      });
+      document.getElementById("dob").addEventListener("mouseover", () => {
+        const dob = document.getElementById("dob").value;
+        if (dob) {
+          const dobDate = new Date(dob);
+          const today = new Date();
+          let age = today.getFullYear() - dobDate.getFullYear();
+          const m = today.getMonth() - dobDate.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+          document.getElementById("age").textContent = `Age: ${age} years`;
+        } else {
+          document.getElementById("age").textContent =
+            "Please enter your Date of Birth.";
+        }
+      });
+      document.getElementById("textArea").addEventListener("input", () => {
+        const textLength = document.getElementById("textArea").value.length;
+        document.getElementById(
+          "charCounter"
+        ).textContent = `Characters: ${textLength}`;
+      });
+    </script>
+  </body>
+</html>

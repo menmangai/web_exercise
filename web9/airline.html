@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>23BCE1022</title>
+    <style>
+        body { font-family: Arial, sans-serif;
+             text-align: center;
+              padding: 20px;
+             }
+        button { padding: 10px 15px;
+             font-size: 16px;
+              cursor: pointer;
+             }
+        .boarding-pass {
+            border: 15px solid rgb(177, 177, 173);
+            padding: 15px;
+            width: 500px;
+            margin: 20px auto;
+            text-align: center;
+            background: #100505;
+            font-style: italic;
+            color: aquamarine;
+            align-self: center;
+        }
+    </style>
+    <script>
+        let seats = Array(10).fill(0);
+        function reserveSeat() {
+            let name = prompt("Enter passenger name:");
+            if (!name) return alert("Name is required!");
+
+            let choice = parseInt(prompt("Enter 1 for First-Class (Seats 1-5) or 2 for Economy (Seats 6-10):"));
+            let assignedSeat = -1;
+            if(choice==1){
+                for (let i = 0; i < 5; i++) {
+                    if (seats[i] === 0) {
+                        seats[i] = 1;
+                        assignedSeat = i + 1;
+                        break;
+                    }
+                }
+            }else if(choice==2){
+                for (let i = 5; i < 10; i++) {
+                    if (seats[i] === 0) {
+                        seats[i] = 1;
+                        assignedSeat = i + 1;
+                        break;
+                    }
+                }
+            }else{
+                alert("The type can only be 1(First Class) or 2(Economy Class)")
+            }
+            if (assignedSeat === -1) {
+                let altChoice = confirm("Selected section is full. Would you like a seat in the other section?");
+                if (altChoice) {
+                    
+                    if(choice==1){
+                        for (let i = 5; i < 10; i++) {
+                            if (seats[i] === 0) {
+                                seats[i] = 1;
+                                assignedSeat = i + 1;
+                                break;
+                            }
+                        }
+                    }
+                    else if(choice==2){
+                        for (let i = 0; i < 5; i++) {
+                            if (seats[i] === 0) {
+                                seats[i] = 1;
+                                assignedSeat = i + 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (assignedSeat === -1) {
+                alert("Sorry, the flight is fully booked.");
+                return;
+            }
+
+            let classType = (assignedSeat <= 5) ? "First Class" : "Economy";
+
+            document.getElementById("passengerName").innerText = name;
+            document.getElementById("seatNumber").innerText = assignedSeat;
+            document.getElementById("seatClass").innerText = classType;
+            document.getElementById("boardingPass").style.display = "block";
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>Airline Reservation System</h1>
+    <button onclick="reserveSeat()">Reserve a Seat</button>
+    <div id="boardingPass" class="boarding-pass" style="display:none;">
+        <h2><u><strong>Boarding Pass</strong></u></h2>
+        <p><strong>Passenger:</strong> <span id="passengerName"></span></p>
+        <p><strong>Seat:</strong> <span id="seatNumber"></span></p>
+        <p><strong>Class:</strong> <span id="seatClass"></span></p>
+        <p><strong>Flight:</strong> AI-2024</p>
+        <p><strong>Gate:</strong> A12</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>23BCE1022</title>
+        <script>
+            var regNo = prompt("Enter your registration number:");
+            var name = prompt("Enter your name:");
+
+            document.writeln('<h1>Registration Display</h1>')
+            document.write('<div style="border: 10px solid red; display: inline-block; padding: 10px; font-weight: bold; text-align: center;">' + regNo + '</div>');
+    
+            var nameDiv = document.createElement("div");
+            nameDiv.innerHTML = '<span style="font-weight: bold; color: red;text-align: center;border:3px solid black;padding: 10px">*' + name + '*</span>';
+            nameDiv.style.marginTop = "20px";
+            document.body.appendChild(nameDiv);
+        </script>
+    
+    </head>
+</html>
+

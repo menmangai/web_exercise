@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d1d5b8;
+            text-align: center;
+        }
+        .container {
+            background-color: #79866d;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            color: white;
+        }
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #b68d4c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Order Receipt</h2>
+
+        <p><strong>Customer Name:</strong> <span id="custName"></span></p>
+        <p><strong>Phone Number:</strong> <span id="custPhone"></span></p>
+        <p><strong>Email:</strong> <span id="custEmail"></span></p>
+
+        <h3>Ordered Products</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity (kg)</th>
+                    <th>Price ($)</th>
+                    <th>Total ($)</th>
+                </tr>
+            </thead>
+            <tbody id="orderDetails"></tbody>
+        </table>
+
+        <h3>Total Amount: $<span id="totalAmount">0</span></h3>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let order = JSON.parse(localStorage.getItem("order"));
+
+            if (order) {
+                document.getElementById("custName").textContent = order.name;
+                document.getElementById("custPhone").textContent = order.phone;
+                document.getElementById("custEmail").textContent = order.email;
+
+                let orderDetails = document.getElementById("orderDetails");
+                let totalAmount = 0;
+
+                order.products.forEach(product => {
+                    let total = product.qty * product.price;
+                    totalAmount += total;
+
+                    let row = `<tr>
+                        <td>${product.name}</td>
+                        <td>${product.qty}</td>
+                        <td>$${product.price}</td>
+                        <td>$${total}</td>
+                    </tr>`;
+                    orderDetails.innerHTML += row;
+                });
+
+                document.getElementById("totalAmount").textContent = totalAmount;
+            }
+        });
+    </script>
+
+</body>
+</html>

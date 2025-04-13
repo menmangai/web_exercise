@@ -1,0 +1,49 @@
+h1{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.background {
+    background: url('rainbow-bokeh-soft-light-abstract-background-eps-10-illustration-bokeh-particles-background-decoration-vector.jpg') no-repeat center;
+    text-align: center;
+}
+
+.description {
+    column-count: 3; 
+    column-gap: 30px;
+    line-height: 30pt; 
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+}
+
+.scene {
+    margin-top: 20px;
+}
+.ball {
+    animation: ball-animation 1s infinite;
+}
+@keyframes ball-animation {
+    0% {
+        transform: translate(0, 0) rotate(0) skew(0deg, 0deg);
+    }
+    25% {
+        transform: translate(-50px, -50px) rotate(45deg) skew(10deg, 0deg);
+    }
+    50% {
+        transform: translate(0, -100px) rotate(90deg) skew(20deg, 5deg);
+    }
+    75% {
+        transform: translate(50px, -50px) rotate(135deg) skew(10deg, 0deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(180deg) skew(0deg, 0deg);
+    }
+}

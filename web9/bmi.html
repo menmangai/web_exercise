@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>23bce1022</title>
+        <script>
+            function calculateBMI() {
+                let weight = parseFloat(document.getElementById("weight").value);
+                let feet = parseFloat(document.getElementById("feet").value);
+                let inches = parseFloat(document.getElementById("inches").value);
+                let gender = document.getElementById("gender").value;
+
+                if (isNaN(weight) || isNaN(feet) || isNaN(inches)) {
+                    alert("Please enter valid numbers for weight and height.");
+                    return;
+                }
+
+                let heightInInches = (feet * 12) + inches;
+                let bmi = (703 * weight) / (heightInInches * heightInInches);
+                bmi = bmi.toFixed(2);
+                document.getElementById("bmi1").value = bmi;
+                let status = "";
+                if (gender === "male") {
+                    if (bmi <= 17.5) status = "Anorexia";
+                    else if (bmi <= 20.7) status = "Underweight";
+                    else if (bmi <= 26.4) status = "Ideal";
+                    else if (bmi <= 27.8) status = "Marginally Overweight";
+                    else if (bmi <= 31.1) status = "Overweight";
+                    else status = "Very Overweight or Obese";
+                } else {
+                    if (bmi <= 17.5) status = "Anorexia";
+                    else if (bmi <= 19.1) status = "Underweight";
+                    else if (bmi <= 25.8) status = "Ideal";
+                    else if (bmi <= 27.3) status = "Marginally Overweight";
+                    else if (bmi <= 32.3) status = "Overweight";
+                    else status = "Very Overweight or Obese";
+                }
+                alert(`Your BMI is: ${bmi}\nStatus: ${status}`);
+            }
+        </script>
+    </head>
+    <body>
+
+        <form>
+            <fieldset><h2>BMI Calculator</h2><label for="gender"></label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="weight">Enter Your Weight:</label>
+            <input type="number" id="weight" placeholder="in pounds">
+            </fieldset>
+            <fieldset>
+                <label for="feet;inches">Enter Your Height:</label>
+            <input type="number" id="feet" placeholder="Feet">
+            <input type="number" id="inches" placeholder="Inches">
+            </fieldset>
+            <fieldset><button onclick="calculateBMI()">Calculate</button></fieldset>    
+            <fieldset>
+                <label for="bmi">YOUR BMI</label>
+                <input type="text" id="bmi1" readonly="readonly">
+            </fieldset>
+        </form>
+    </body>
+</html>
+

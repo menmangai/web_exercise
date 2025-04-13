@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>
+                Welcome to my page - 23bce1022
+            </title>
+            <style> body { background-image: url('lilacs-4250869_640.jpg'); } </style>
+            
+    </head>
+    <body>
+        <h1 style="font-size: 100%;"><u>Using Table tag to create a time table for 8th standard</u></h1>
+         <TABLE BORDER="3">
+            <TR><TH colspan="6">Time Table</TH></TR>
+            <TR>
+                <TH ROWSPAN="6">Hours</TH>
+                <TH>Mon</TH>
+                <TH>Tue</TH>
+                <TH>Wed</TH>
+                <TH>Thu</TH>
+                <TH>Fri</TH>
+            </TR>
+            <tr>
+                <TD>Science</TD>
+                <TD>Maths</TD>
+                <TD>Science</TD>
+                <TD>Maths</TD>
+                <TD>Arts</TD>
+            </tr>
+            <TR>
+                <TD>Social</TD>
+                <TD>History</TD>
+                <TD>English</TD>
+                <TD>Social</TD>
+                <TD>Sports</TD>
+            </TR>
+            <TR><TH colspan="6">Lunch</TH></TR>
+            <TR>
+                <TD>Science</TD>
+                <TD>Maths</TD>
+                <TD>Science</TD>
+                <TD>Maths</TD>
+                <TD rowspan="2">Project</TD>
+            </TR>
+            <TR>
+                <TD>Social</TD>
+                <TD>History</TD>
+                <TD>English</TD>
+                <TD>Social</TD>
+            </TR>
+         </TABLE>
+         <BR><br><h2 style="font-size: 100%;"><u>Using nested tables with a CLICK ME in the middle</u></h2>
+         <table BORDER="2" BGCOLOR="blue">
+            <tr>
+                <td>
+                    <table BORDER="2" BGCOLOR="YELLOW">
+                        <tr>
+                            <td><table BORDER="2" BGCOLOR="RED">
+                                <TR>
+                                    <TD><TABLE BORDER="2" BGCOLOR="WHITE">
+                                        <TR>
+                                            <TD><TABLE BORDER="2" BGCOLOR="GREEN">
+                                                <TR>
+                                                    <TD colspan="2"><a href="#myTable">CLICK ME</a></TD>
+                                                </TR>
+                                            </TABLE></TD>
+                                        </TR>
+                                    </TABLE></TD>
+                                </TR>
+
+                            </table></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+         </table>
+         <br><br><BR><BR><h3 style="font-size: 100%;"><u>Expenses table</u></h3>
+         <table id="myTable2" border="3">
+            <TR>
+                <TH rowspan="2">Year</TH>
+                <TH rowspan="2">Quarter</TH>
+                <TH colspan="2">Expenses</TH>
+                <TH colspan="2">Income</TH>
+            </TR>
+            <TR>
+                <TD>Quetta</TD>
+                <TD>Dubai</TD>
+                <TD>Quetta</TD>
+                <TD>Dubai</TD>
+            </TR>
+            <TR>
+                <TD rowspan="4">2021</TD>
+                <TD>1</TD>
+                <TD>1,900</TD>
+                <TD>8,650</TD>
+                <TD>9,000</TD>
+                <TD>7,780</TD>
+            </TR>
+            <TR>
+                <TD>2</TD>
+                <TD>2,230</TD>
+                <TD>8,650</TD>
+                <TD>8,500</TD>
+                <TD>8,670</TD>
+            </TR>
+            <TR>
+                <TD>3</TD>
+                <TD>4,000</TD>
+                <TD>8,650</TD>
+                <TD>9,900</TD>
+                <TD>9,870</TD>
+            </TR>
+            <TR>
+                <TD>4</TD>
+                <TD>2,200</TD>
+                <TD>8,650</TD>
+                <TD>9,800</TD>
+                <TD>9,900</TD>
+            </TR>
+            <TR>
+                <TD rowspan="4">2022</TD>
+                <TD>1</TD>
+                <TD>7,780</TD>
+                <TD>8,650</TD>
+                <TD>7,780</TD>
+                <TD>9,000</TD>
+            </TR>
+            <TR>
+                <TD>2</TD>
+                <TD>8,670</TD>
+                <TD>8,650</TD>
+                <TD>8,670</TD>
+                <TD>8,500</TD>
+            </TR>
+            <TR>
+                <TD>3</TD>
+                <TD>9,870</TD>
+                <TD>8,650</TD>
+                <TD>9,870</TD>
+                <TD>9,900</TD>
+            </TR>
+            <TR>
+                <TD>4</TD>
+                <TD>9,900</TD>
+                <TD>8,650</TD>
+                <TD>9,900</TD>
+                <TD>9,800</TD>
+            </TR>
+            <TR>
+                <TD>2013</TD>
+                <TD colspan="5">****</TD>
+            </TR>
+         </table>
+         <br><br><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><br><br><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><h4 style="font-size: 100%;"><u>A test table with merged cells</u></h4>
+         <table id="myTable" border="3">
+           <TR>
+            <TH rowspan="2"><a href="#myTable2">Expenses</a></TH>
+            <TH colspan="2">Average</TH>
+            <TH rowspan="2">Red eyes</TH>
+           </TR>
+           <TR>
+            <TH>height</TH>
+            <TH>weight</TH>
+           </TR>
+           <TR>
+            <TH>Males</TH>
+            <TD>1.9</TD>
+            <TD>0.003</TD>
+            <TD>40%</TD>
+           </TR>
+           <TR>
+            <TH>Females</TH>
+            <TD>1.7</TD>
+            <TD>0.002</TD>
+            <TD>43%</TD>
+           </TR>
+        </table>
+    </body>
+</html>

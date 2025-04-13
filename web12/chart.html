@@ -1,0 +1,247 @@
+<html>
+<head>
+    <title>23BCE1022</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .chart {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Charts</h1>
+    
+    <div class="chart-container">
+        <div class="chart" id="barChart"></div>
+        <div class="chart" id="lineChart"></div>
+        <div class="chart" id="pieChart"></div>
+        <div class="chart" id="donutChart"></div>
+    </div>
+
+    <script>
+        function generateData() {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+            const categories = ['Category A', 'Category B', 'Category C', 'Category D'];
+            
+            return {
+                months: months,
+                categories: categories,
+                barValues: categories.map(() => months.map(() => Math.floor(Math.random() * 100) + 20)),
+                lineValues: categories.map(() => months.map(() => Math.floor(Math.random() * 100) + 10)),
+                pieValues: categories.map(() => Math.floor(Math.random() * 100) + 10)
+            };
+        }
+
+        function generateColors(count) {
+            const colorPalette = [
+                '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', 
+                '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+                '#bcbd22', '#17becf', '#aec7e8', '#ffbb78'
+            ];
+            
+            if (count > colorPalette.length) {
+                for (let i = colorPalette.length; i < count; i++) {
+                    const r = Math.floor(Math.random() * 255);
+                    const g = Math.floor(Math.random() * 255);
+                    const b = Math.floor(Math.random() * 255);
+                    colorPalette.push(`rgb(${r},${g},${b})`);
+                }
+            }
+            
+            return colorPalette.slice(0, count);
+        }
+  
+        function createBarChart(data) {
+            const colors = generateColors(data.categories.length);
+            const traces = [];
+            
+            for (let i = 0; i < data.categories.length; i++) {
+                traces.push({
+                    x: data.months,
+                    y: data.barValues[i],
+                    type: 'bar',
+                    name: data.categories[i],
+                    marker: {
+                        color: colors[i]
+                    }
+                });
+            }
+            
+            const layout = {
+                title: 'Monthly Sales by Category',
+                xaxis: {
+                    title: 'Month',
+                    titlefont: {
+                        size: 14
+                    }
+                },
+                yaxis: {
+                    title: 'Sales Amount ($)',
+                    titlefont: {
+                        size: 14
+                    }
+                },
+                barmode: 'group',
+                legend: {
+                    title: {
+                        text: 'Categories'
+                    }
+                },
+                autosize: true
+            };
+            
+            Plotly.newPlot('barChart', traces, layout, {responsive: true});
+        }
+
+        function createLineChart(data) {
+            const colors = generateColors(data.categories.length);
+            const traces = [];
+            
+            for (let i = 0; i < data.categories.length; i++) {
+                traces.push({
+                    x: data.months,
+                    y: data.lineValues[i],
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    name: data.categories[i],
+                    line: {
+                        color: colors[i],
+                        width: 3
+                    },
+                    marker: {
+                        size: 8
+                    }
+                });
+            }
+            
+            const layout = {
+                title: 'Monthly Growth Trends',
+                xaxis: {
+                    title: 'Month',
+                    titlefont: {
+                        size: 14
+                    }
+                },
+                yaxis: {
+                    title: 'Growth Rate (%)',
+                    titlefont: {
+                        size: 14
+                    }
+                },
+                legend: {
+                    title: {
+                        text: 'Categories'
+                    }
+                },
+                autosize: true
+            };
+            
+            Plotly.newPlot('lineChart', traces, layout, {responsive: true});
+        }
+
+        function createPieChart(data) {
+            const colors = generateColors(data.categories.length);
+            
+            const trace = {
+                labels: data.categories,
+                values: data.pieValues,
+                type: 'pie',
+                marker: {
+                    colors: colors
+                },
+                textinfo: 'label+percent',
+                insidetextorientation: 'radial'
+            };
+            
+            const layout = {
+                title: 'Market Share Distribution',
+                showlegend: true,
+                legend: {
+                    title: {
+                        text: 'Categories'
+                    }
+                },
+                autosize: true
+            };
+            
+            Plotly.newPlot('pieChart', [trace], layout, {responsive: true});
+        }
+
+        function createDonutChart(data) {
+            const colors = generateColors(data.categories.length);
+            
+            const trace = {
+                labels: data.categories,
+                values: data.pieValues,
+                type: 'pie',
+                hole: 0.4,
+                marker: {
+                    colors: colors
+                },
+                textinfo: 'label+percent',
+                insidetextorientation: 'radial'
+            };
+            
+            const layout = {
+                title: 'Revenue Distribution by Category',
+                showlegend: true,
+                legend: {
+                    title: {
+                        text: 'Categories'
+                    }
+                },
+                annotations: [{
+                    font: {
+                        size: 14
+                    },
+                    showarrow: false,
+                    text: 'Revenue',
+                    x: 0.5,
+                    y: 0.5
+                }],
+                autosize: true
+            };
+            
+            Plotly.newPlot('donutChart', [trace], layout, {responsive: true});
+        }
+ 
+        function initCharts() {
+            const data = generateData();
+            createBarChart(data);
+            createLineChart(data);
+            createPieChart(data);
+            createDonutChart(data);
+        }
+
+        document.addEventListener('DOMContentLoaded', initCharts);
+ 
+        window.addEventListener('resize', function() {
+            const chartIds = ['barChart', 'lineChart', 'pieChart', 'donutChart'];
+            chartIds.forEach(id => {
+                Plotly.relayout(id, {autosize: true});
+            });
+        });
+    </script>
+</body>
+</html>
+

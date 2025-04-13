@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>23BCE1022</title>
+    <style>
+        .error { color: red; font-size: 14px; margin-left: 10px; }
+        span { display: inline-block; min-width: 200px; }
+    </style>
+    <script>
+        function displayTime() {
+            let now = new Date();
+            document.getElementById("time").innerHTML = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+            setTimeout(displayTime, 1000);
+        }
+
+        function validateField(field, regex, message) {
+            let value = field.value.trim();
+            let errorSpan = document.getElementById(field.id + "-error");
+
+            if (!regex.test(value)) {
+                errorSpan.textContent = message;
+                return false;
+            } else {
+                errorSpan.textContent = "";
+                return true;
+            }
+        }
+
+        function validateForm(event) {
+            event.preventDefault(); 
+            
+            let isValid = true;
+
+            isValid &= validateField(document.getElementById("name"), /^[A-Za-z\s]{1,15}$/, "Max 15 letters only");
+            isValid &= validateField(document.getElementById("zip"), /^\d{5,6}$/, "Zip should be 5-6 digits");
+            isValid &= validateField(document.getElementById("phone"), /^\d{10}$/, "Phone must be exactly 10 digits");
+            isValid &= validateField(document.getElementById("email"), /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email");
+            isValid &= validateField(document.getElementById("password"), /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/, "8-15 chars, 1 letter, 1 number, 1 special char");
+            isValid &= validateField(document.getElementById("pan"), /^[A-Z0-9]{10}$/, "PAN should be 10 uppercase letters/numbers");
+            
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("password1").value;
+            let confirmPasswordError = document.getElementById("password1-error");
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = "Passwords do not match";
+                isValid = false;
+            } else {
+                confirmPasswordError.textContent = "";
+            }
+
+            if (isValid) {
+                document.getElementById("formMessage").innerHTML = "<b style='color:green;'>Form submitted successfully!</b>";
+            }
+        }
+    </script>
+</head>
+<body onload="displayTime()" >
+    <form id="myForm" onsubmit="validateForm(event)" >
+        
+        <fieldset>
+            <h2>Test JavaScript Form Validation</h2> <div>Time: <span id="time"></span></div>
+        <label for="name">Name:*</label>
+        <input type="text" id="name" oninput="validateField(this, /^[A-Za-z\s]{1,15}$/, 'Max 15 letters only')">
+        <span id="name-error" class="error"></span><br>
+
+        <label for="addr">Address:</label>
+        <textarea id="addr"></textarea><br>
+
+        <label for="zip">Zip Code:*</label>
+        <input type="text" id="zip" oninput="validateField(this, /^\d{5,6}$/, 'Zip should be 5-6 digits')">
+        <span id="zip-error" class="error"></span><br>
+
+        <label for="country">Country:*</label>
+        <select>
+            <option>India</option>
+            <option>USA</option>
+            <option>Norway</option>
+            <option>Dubai</option>
+            <option>Japan</option>
+            <option>Germany</option>
+            <option>Finland</option>
+        </select><br>
+
+        <label for="gen">Gender:*</label>
+        <input type="radio" name="gender" value="Male">Male
+        <input type="radio" name="gender" value="Female">Female<br>
+
+        <label for="preferences">Preferences:*</label>
+        <input type="checkbox" value="Red">Red
+        <input type="checkbox" value="Green">Green
+        <input type="checkbox" value="Blue">Blue<br>
+
+        <label for="phone">Phone:*</label>
+        <input type="text" id="phone" oninput="validateField(this, /^\d{10}$/, 'Phone number must be exactly 10 digits')">
+        <span id="phone-error" class="error"></span><br>
+
+        <label for="email">Email:*</label>
+        <input type="text" id="email" oninput="validateField(this, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email')">
+        <span id="email-error" class="error"></span><br>
+
+        <label for="password">Password:*</label>
+        <input type="password" id="password" oninput="validateField(this, /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/, '8-15 chars, 1 letter, 1 number, 1 special char')">
+        <span id="password-error" class="error"></span><br>
+
+        <label for="password1">Verify password:*</label>
+        <input type="password" id="password1" oninput="validateField(document.getElementById('password1'), /^.*$/, '')">
+        <span id="password1-error" class="error"></span><br>
+
+        <label for="pan">PAN No:*</label>
+        <input type="text" id="pan" oninput="validateField(this, /^[A-Z0-9]{10}$/, 'PAN should be 10 uppercase letters/numbers')">
+        <span id="pan-error" class="error"></span><br>
+
+        <button type="submit">SEND</button>
+        <button type="reset">CLEAR</button>
+    </fieldset>
+    </form>
+
+    <div id="formMessage"></div>
+</body>
+</html>

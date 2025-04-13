@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>23BCE1022</title>
+</head>
+<body>
+    <canvas id="sceneCanvas" width="600" height="400" style="border:1px solid black;"></canvas>
+    <script>
+        const canvas = document.getElementById("sceneCanvas");
+        const ctx = canvas.getContext("2d");
+
+        
+        ctx.beginPath();
+        ctx.ellipse(300, 250, 150, 50, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = "lightblue";
+        ctx.strokeStyle = "blue";
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(230, 240); 
+        ctx.lineTo(320, 240);
+        ctx.lineTo(300, 260); 
+        ctx.lineTo(260, 260); 
+        ctx.fillStyle = "brown";
+        ctx.strokeStyle = "blue";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(500, 250, 10, 0, 2 * Math.PI); 
+        ctx.arc(480, 260, 15, 0, 2 * Math.PI); 
+        ctx.fillStyle = "yellow";
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(505, 250, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.moveTo(510, 240); 
+        ctx.lineTo(520, 250);
+        ctx.lineTo(510, 260); 
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        ctx.closePath();
+
+        
+        ctx.beginPath();
+        ctx.arc(500, 50, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.closePath();
+
+        // Draw House
+        ctx.fillStyle = "orange";
+        ctx.fillRect(60, 200, 80, 80);
+        ctx.fillStyle = "blue";
+        ctx.fillRect(70, 210, 20, 20); 
+        ctx.fillStyle = "brown";
+        ctx.fillRect(90, 240, 20, 40); 
+        ctx.beginPath();
+        ctx.moveTo(60, 200);
+        ctx.lineTo(100, 150);
+        ctx.lineTo(140, 200);
+        ctx.closePath();
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(550, 240, 10, 0, 2 * Math.PI); 
+        ctx.arc(540, 240, 10, 0, 2 * Math.PI); 
+        ctx.arc(560, 240, 10, 0, 2 * Math.PI);
+        ctx.arc(545, 250, 10, 0, 2 * Math.PI); 
+        ctx.arc(555, 250, 10, 0, 2 * Math.PI);
+        ctx.arc(545, 230, 10, 0, 2 * Math.PI); 
+        ctx.arc(555, 230, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "pink";
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(550, 240, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.closePath();
+        ctx.fillStyle = "green";
+        ctx.fillRect(550, 255, 5, 30);
+        ctx.beginPath();
+        ctx.ellipse(560, 260, 10, 5, 4, 0, 2 * Math.PI);
+        ctx.ellipse(540, 260, 10, 5, 6, 0, 2 * Math.PI);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(500, 290, 10, 0, 2 * Math.PI); 
+        ctx.arc(510, 290, 10, 0, 2 * Math.PI); 
+        ctx.fillStyle = "grey";
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(100, 300, 10, 0, 2 * Math.PI); 
+        ctx.arc(110, 300, 10, 0, 2 * Math.PI); 
+        ctx.arc(120, 300, 10, 0, 2 * Math.PI); 
+        ctx.fillStyle = "grey";
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+        ctx.fill();
+       
+        ctx.closePath();
+    </script>
+</body>
+</html>
