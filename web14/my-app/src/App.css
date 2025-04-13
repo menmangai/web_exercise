@@ -1,0 +1,32 @@
+.profile-page {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-image img {
+  border: 3px solid #ddd;
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.user-posts {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.user-posts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-posts li {
+  background: #f9f9f9;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
